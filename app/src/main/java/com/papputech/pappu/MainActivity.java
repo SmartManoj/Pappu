@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                                             speechRecognizer.startListening(speechRecognizerIntent);
 //                                            mute(0);
                                         }
-                                    }, 1500);
+                                    }, 1600);
 
                                 }
                             });
@@ -133,15 +133,17 @@ public class MainActivity extends AppCompatActivity {
 
                 String input = data.get(0);
                 editText.setText(input);
-                String output = input;
+                String output = null;
                 if (Arrays.asList("மணி எத்தனை","மணி எத்தன","மணி என்ன").contains(input)){
                     output = TimeInTamil.timeInTamil();
                     Toast.makeText(MainActivity.this, output, Toast.LENGTH_SHORT).show();
                 } else if (Arrays.asList("சரியாக மணி எத்தனை","சரியா மணி எத்தன","சரியா மணி என்ன").contains(input)) {
                     output = TimeInTamil.exactTimeInTamil();
                 }
+                if(output != null){
+                    t1.speak(output, TextToSpeech.QUEUE_FLUSH, null, TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID);
 
-                t1.speak(output, TextToSpeech.QUEUE_FLUSH, null, TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID);
+                }
 
             }
 
