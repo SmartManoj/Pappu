@@ -142,7 +142,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if(output != null){
                     t1.speak(output, TextToSpeech.QUEUE_FLUSH, null, TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID);
-
+                }
+                else {
+                    speechRecognizer.startListening(speechRecognizerIntent);
                 }
 
             }

@@ -24,5 +24,15 @@
             </intent-filter>
         </activity>
     </application>
+    <queries>
+        <!-- Place inside the <queries> element. -->
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+        <!-- Place inside the <queries> element. -->
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
 
 </manifest>
