@@ -59,7 +59,7 @@ public class TimeInTamil {
 
     private static final HashMap<String, String> minsColloquial = new HashMap<String, String>() {
         {
-            put("05", "அஞ்சு");
+            put("5", "அஞ்சு");
             put("10", "பத்து");
             put("15", "கால்");
             put("20", "இருபது");
@@ -70,16 +70,16 @@ public class TimeInTamil {
             put("45", "முக்கால்");
             put("50", "அம்பது");
             put("55", "அம்பத்தஞ்சு");
-            put("00", "");
+            put("0", "");
         }
     };
 
     public static String roundToNearest5(int x) {
         int a = 5 * Math.round((float)x / 5);
         if (a == 60) {
-            return "00";
+            return "0";
         }
-        return String.format(Locale.getDefault(), "%02d", a);
+        return String.format(Locale.getDefault(), "%d", a);
     }
 
     public static String exactTimeInTamil() {
@@ -95,9 +95,12 @@ public class TimeInTamil {
         String[] timeParts = sdf.format(new Date()).split(":");
         String hour = timeParts[0];
         String minute = timeParts[1];
+        // hour = "11";
+        // minute = "02";
+
         String minute2 = roundToNearest5(Integer.parseInt(minute));
 
-        if (minute2.equals("00") && !minute.equals(minute2)) {
+        if ( Integer.parseInt(minute)>55) {
             int nextHour = Integer.parseInt(hour) + 1;
             hour = String.format(Locale.getDefault(), "%02d", nextHour);
         }
